@@ -35,15 +35,16 @@ function renderFootnotes(text, config) {
         });
     });
     var reFootnoteContent = new RegExp('('+ indexLabel 
-        + '|\\[\\d+\\])([\\S \\t]+?)(?::|：) ?([\\S\\s]+?)(?=\\n[\\S\\s]+?(?:' 
+        + '|\\[\\d+\\])([\\S \\t]+?)(?::|：) ?([\\S\\s]+?)(?=[\\S\\s]+?(?:' 
         + indexLabel + '|\\[\\d+\\])(?:[\\S \\t]+?)(?::|：)|\n\n|$)', 'g');
 
-    // render (HTML) footnotes reference
+    // threat all footnote contents
+    var directory = config.target_directory;
     text = text.replace(reFootnoteContent, function (match, index, original, content) {
         var reIndex = original + '~' + index + '~';
         var indexId = (undefined !== indexLabelMap[index]) ? indexLabelMap[index] : parseInt(index.substring(1));
-        if (-1 != text.indexOf(reIndex) && (content || config.directory)) {
-            content = content || (config.directory + encodeURI(original) + indexId);
+        if (-1 != text.indexOf(reIndex) && (trim(content) || directory)) {
+            content = trim(content) || (directory + encodeURI(original) + indexId);
             footnotes.push(indexMap[reIndex] = {
                 index: index,
                 indexId: indexId,

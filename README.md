@@ -21,7 +21,7 @@ plugins:
 
 ```
 sub_footnote:
-  location_target_class: location-target
+  target_directory: target-directory
 ```
 
 ## Syntax

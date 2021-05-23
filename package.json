@@ -1,6 +1,6 @@
 {
   "name": "hexo-sub-footnote",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A plugin to support markdown sub footnotes in your Hexo blog posts.",
   "main": "index.js",
   "scripts": {
