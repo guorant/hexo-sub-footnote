@@ -52,9 +52,10 @@ function renderFootnotes(text, config) {
                 content: content,
                 reIndex: reIndex
             });
+            // remove footnote content
+            return '';
         }
-        // remove footnote content
-        return '';
+        return match;
     });
 
     // render footnotes (HTML)
